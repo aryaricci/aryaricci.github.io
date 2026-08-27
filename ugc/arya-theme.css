@@ -1,0 +1,727 @@
+/* =========================================================
+   ARYA RICCI â€” UGC THEME
+   Loads the current UGC stylesheet first, then adds the
+   maroon / cream / gold editorial styling used on the
+   homepage + YouTube page.
+   ========================================================= */
+
+@import url("styles.css");
+
+:root{
+  --ink:#1a1714;
+  --muted:#6d655f;
+  --paper:#f4efe8;
+  --paper-bright:#fbf8f3;
+  --line:rgba(26,23,20,.14);
+
+  /* Keep --accent working for the original UGC CSS */
+  --accent:#5c1526;
+
+  --maroon:#5c1526;
+  --maroon-dark:#3c0d18;
+  --rose:#d9b4ab;
+  --gold:#b79a67;
+  --tan:#c5a47f;
+}
+
+/* -----------------------------
+   GLOBAL
+------------------------------ */
+
+body{
+  color:var(--ink);
+  background:var(--paper-bright);
+}
+
+::selection{
+  background:var(--maroon);
+  color:#fff;
+}
+
+.section-label,
+.personal-kicker,
+.step-number,
+.contact-details dt{
+  color:var(--maroon);
+}
+
+.featured h2,
+.collections-header h2,
+.collection-row-heading h3,
+.thinking-section h2,
+.process-heading h2,
+.expect-heading h2,
+.about-copy h2,
+.contact-copy h2{
+  color:var(--maroon-dark);
+}
+
+/* -----------------------------
+   HEADER â€” MATCH HOMEPAGE
+------------------------------ */
+
+.site-header{
+  background:rgba(244,239,232,.96);
+  border-bottom:1px solid rgba(0,0,0,.04);
+}
+
+.brand-name{
+  color:var(--maroon-dark);
+  letter-spacing:.05em;
+}
+
+.brand-role{
+  color:var(--ink) !important;
+  font-size:11px;
+  letter-spacing:.26em;
+}
+
+.site-nav a{
+  position:relative;
+  color:var(--ink);
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:17px;
+  font-weight:500;
+  letter-spacing:0;
+  text-transform:none;
+  transition:color .2s ease;
+}
+
+.site-nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-11px;
+  height:1px;
+  background:var(--maroon);
+  transform:scaleX(0);
+  transition:transform .2s ease;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"]{
+  color:var(--maroon-dark);
+}
+
+.site-nav a:hover::after,
+.site-nav a[aria-current="page"]::after{
+  transform:scaleX(1);
+}
+
+.header-cta{
+  padding:17px 26px;
+  border-radius:2px;
+  background:#080808;
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:16px;
+  font-weight:500;
+  letter-spacing:0;
+  text-transform:none;
+}
+
+.header-cta:hover{
+  background:var(--maroon-dark);
+}
+
+/* -----------------------------
+   HERO â€” EDITORIAL / COLLAGE
+------------------------------ */
+
+.hero{
+  position:relative;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 13% 20%,rgba(92,21,38,.055),transparent 23%),
+    radial-gradient(circle at 73% 76%,rgba(183,154,103,.08),transparent 24%),
+    var(--paper-bright);
+  border-bottom:22px solid var(--maroon);
+}
+
+.hero-copy{
+  overflow:hidden;
+  padding-top:96px;
+  background:transparent;
+}
+
+.hero-copy::before{
+  content:"AR âœ¦";
+  display:block;
+  margin:0 0 18px 2px;
+  color:var(--gold);
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:28px;
+  letter-spacing:.03em;
+}
+
+.hero-copy::after{
+  content:"â™¡";
+  position:absolute;
+  left:11%;
+  bottom:38px;
+  color:var(--gold);
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:26px;
+  transform:rotate(-9deg);
+  opacity:.9;
+}
+
+.eyebrow{
+  color:var(--maroon);
+}
+
+.hero h1{
+  color:var(--maroon-dark);
+  letter-spacing:-.035em;
+}
+
+.hero h1 em{
+  color:var(--maroon);
+  font-style:italic;
+}
+
+.hero-description{
+  color:var(--muted);
+}
+
+.button{
+  border-color:var(--maroon-dark);
+  border-radius:2px;
+}
+
+.button-dark{
+  background:var(--maroon-dark);
+  color:#fff;
+}
+
+.button-dark:hover{
+  background:var(--maroon);
+}
+
+.button-light{
+  color:var(--maroon-dark);
+  border-color:rgba(92,21,38,.65);
+  background:rgba(251,248,243,.7);
+}
+
+.quick-facts li,
+.fact-icon{
+  color:var(--maroon-dark);
+}
+
+.camera-icon{
+  border-color:var(--maroon);
+}
+
+.camera-icon::before{
+  border-color:var(--maroon);
+}
+
+.camera-icon::after{
+  background:var(--maroon);
+}
+
+/* Styled portrait card + cheetah backdrop */
+.hero-media{
+  overflow:visible;
+  padding:52px 50px 72px 30px;
+  background:transparent;
+  isolation:isolate;
+}
+
+.hero-media::before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  width:43%;
+  height:88%;
+  right:0;
+  top:5%;
+  opacity:.62;
+  background-color:#c9ad8b;
+  background-image:
+    radial-gradient(ellipse at 18% 24%,#40352f 0 5px,transparent 5.5px),
+    radial-gradient(ellipse at 22% 27%,transparent 0 9px,#85705f 9.5px 12px,transparent 12.5px),
+    radial-gradient(ellipse at 66% 18%,#40352f 0 4px,transparent 4.5px),
+    radial-gradient(ellipse at 69% 20%,transparent 0 8px,#8b715e 8.5px 11px,transparent 11.5px),
+    radial-gradient(ellipse at 45% 56%,#40352f 0 5px,transparent 5.5px),
+    radial-gradient(ellipse at 47% 58%,transparent 0 9px,#876f5d 9.5px 12px,transparent 12.5px),
+    radial-gradient(ellipse at 82% 72%,#40352f 0 5px,transparent 5.5px);
+  background-size:
+    90px 82px,90px 82px,
+    96px 86px,96px 86px,
+    100px 90px,100px 90px,
+    86px 90px;
+  clip-path:polygon(12% 0,100% 0,100% 100%,0 100%,7% 70%,3% 48%,8% 28%);
+}
+
+.hero-media::after{
+  content:"";
+  position:absolute;
+  z-index:4;
+  width:138px;
+  height:30px;
+  top:38px;
+  left:48%;
+  background:rgba(226,205,170,.76);
+  border:1px solid rgba(183,154,103,.13);
+  transform:translateX(-50%) rotate(-4deg);
+}
+
+.hero-media img{
+  position:relative;
+  z-index:2;
+  width:92%;
+  height:100%;
+  margin:0 auto;
+  object-fit:cover;
+  padding:13px 13px 54px;
+  background:#f7f3ed;
+  border:1px solid rgba(26,23,20,.14);
+  box-shadow:0 22px 55px rgba(39,28,24,.15);
+  transform:rotate(1deg);
+}
+
+.replace-note{
+  display:none;
+}
+
+/* -----------------------------
+   FEATURED CAMPAIGN
+------------------------------ */
+
+.featured{
+  position:relative;
+  background:var(--paper-bright);
+}
+
+.featured::before{
+  content:"âœ¦";
+  position:absolute;
+  left:4.5%;
+  top:34px;
+  color:var(--gold);
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:22px;
+}
+
+.campaign-brand{
+  color:var(--maroon);
+}
+
+.tag-list span{
+  border-color:rgba(92,21,38,.32);
+  background:rgba(92,21,38,.035);
+  color:var(--maroon-dark);
+}
+
+.featured-media{
+  border-radius:4px;
+  border:1px solid rgba(92,21,38,.14);
+  box-shadow:0 20px 50px rgba(60,13,24,.12);
+}
+
+.play-button{
+  color:var(--maroon-dark);
+}
+
+/* -----------------------------
+   FEATURED WORK
+------------------------------ */
+
+.work-section{
+  position:relative;
+  background:
+    radial-gradient(circle at 90% 10%,rgba(92,21,38,.055),transparent 22%),
+    var(--paper);
+}
+
+.portfolio-link,
+.text-link,
+.collection-row-heading a{
+  color:var(--maroon-dark);
+}
+
+.work-card{
+  border-radius:4px;
+  border:1px solid rgba(92,21,38,.13);
+  box-shadow:0 10px 24px rgba(60,13,24,.08);
+}
+
+.card-play,
+.collection-play{
+  border-color:rgba(255,255,255,.8);
+}
+
+/* -----------------------------
+   HOW I THINK â€” MAROON MOMENT
+------------------------------ */
+
+.thinking-section{
+  position:relative;
+  background:var(--maroon-dark);
+  color:var(--paper-bright);
+}
+
+.thinking-section::before{
+  content:"âœ¦";
+  position:absolute;
+  top:28px;
+  left:5%;
+  color:var(--gold);
+  font-size:28px;
+}
+
+.thinking-section::after{
+  content:"â™¡";
+  position:absolute;
+  right:5%;
+  bottom:26px;
+  color:var(--rose);
+  font-size:28px;
+  transform:rotate(8deg);
+}
+
+.thinking-section h2{
+  color:var(--paper-bright);
+}
+
+.thinking-card{
+  border-right-color:rgba(255,255,255,.16);
+}
+
+.thinking-icon{
+  color:var(--gold);
+}
+
+.thinking-card h3{
+  color:var(--paper-bright);
+}
+
+.thinking-card p{
+  color:rgba(251,248,243,.72);
+}
+
+/* -----------------------------
+   CONTENT COLLECTIONS
+------------------------------ */
+
+.collections-section{
+  background:
+    radial-gradient(circle at 15% 10%,rgba(92,21,38,.065),transparent 26%),
+    var(--paper-bright);
+}
+
+.collections-header{
+  border-bottom-color:rgba(92,21,38,.2);
+}
+
+.collection-row-heading h3{
+  color:var(--maroon-dark);
+}
+
+.collection-card{
+  border-radius:4px;
+  border:1px solid rgba(92,21,38,.12);
+  box-shadow:0 8px 20px rgba(60,13,24,.07);
+}
+
+/* -----------------------------
+   CREATIVE PROCESS
+------------------------------ */
+
+.process-section{
+  position:relative;
+  background:var(--paper);
+}
+
+.process-heading .section-label::before{
+  content:"âœ¦ ";
+  color:var(--gold);
+}
+
+.process-track::before{
+  background:rgba(92,21,38,.42);
+}
+
+.step-number{
+  color:var(--maroon);
+}
+
+.process-icon{
+  border-color:rgba(92,21,38,.4);
+  background:var(--paper-bright);
+  color:var(--maroon-dark);
+  border-radius:50%;
+  box-shadow:0 7px 18px rgba(60,13,24,.08);
+}
+
+/* -----------------------------
+   WHAT TO EXPECT
+------------------------------ */
+
+.expect-section{
+  background:var(--paper-bright);
+}
+
+.expect-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:4px;
+  border-color:rgba(92,21,38,.14);
+  background:rgba(255,255,255,.36);
+}
+
+.expect-card::after{
+  content:"âœ¦";
+  position:absolute;
+  right:18px;
+  top:14px;
+  color:rgba(183,154,103,.55);
+  font-size:15px;
+}
+
+.expect-card:hover{
+  border-color:rgba(92,21,38,.45);
+  box-shadow:0 18px 36px rgba(60,13,24,.1);
+}
+
+.expect-icon{
+  color:var(--maroon);
+  background:rgba(92,21,38,.08);
+}
+
+/* -----------------------------
+   ABOUT â€” POLAROID / CHEETAH
+------------------------------ */
+
+.about-section{
+  position:relative;
+  background:var(--paper);
+}
+
+.about-media{
+  position:relative;
+  overflow:visible;
+  padding:54px 38px 62px 52px;
+  background:
+    linear-gradient(90deg,var(--maroon) 0 12%,transparent 12%);
+  isolation:isolate;
+}
+
+.about-media::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  right:0;
+  bottom:0;
+  width:42%;
+  height:62%;
+  opacity:.5;
+  background-color:#c9ad8b;
+  background-image:
+    radial-gradient(ellipse at 18% 24%,#40352f 0 5px,transparent 5.5px),
+    radial-gradient(ellipse at 22% 27%,transparent 0 9px,#85705f 9.5px 12px,transparent 12.5px),
+    radial-gradient(ellipse at 66% 18%,#40352f 0 4px,transparent 4.5px),
+    radial-gradient(ellipse at 69% 20%,transparent 0 8px,#8b715e 8.5px 11px,transparent 11.5px);
+  background-size:90px 82px,90px 82px,96px 86px,96px 86px;
+}
+
+.about-media::after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  width:120px;
+  height:28px;
+  left:50%;
+  top:40px;
+  background:rgba(226,205,170,.75);
+  transform:translateX(-50%) rotate(-4deg);
+}
+
+.about-media img{
+  width:92%;
+  height:100%;
+  margin:0 auto;
+  padding:12px 12px 48px;
+  background:#f7f3ed;
+  border:1px solid rgba(26,23,20,.14);
+  box-shadow:0 20px 48px rgba(60,13,24,.13);
+  transform:rotate(-.8deg);
+}
+
+.about-tags span{
+  border-color:rgba(92,21,38,.3);
+  color:var(--maroon-dark);
+  border-radius:999px;
+}
+
+/* -----------------------------
+   CONTACT â€” RICHER BRAND CLOSE
+------------------------------ */
+
+.contact-section{
+  background:var(--paper-bright);
+}
+
+.contact-visual{
+  position:relative;
+}
+
+.contact-visual::after{
+  content:"AR âœ¦";
+  position:absolute;
+  left:28px;
+  bottom:26px;
+  padding:11px 15px;
+  background:rgba(60,13,24,.88);
+  color:#fff;
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:18px;
+  letter-spacing:.04em;
+}
+
+.contact-copy{
+  position:relative;
+}
+
+.contact-copy::before{
+  content:"â™¡";
+  position:absolute;
+  right:8%;
+  top:9%;
+  color:var(--gold);
+  font-size:28px;
+  transform:rotate(10deg);
+}
+
+.contact-details div{
+  border-top-color:rgba(92,21,38,.18);
+}
+
+/* -----------------------------
+   FOOTER
+------------------------------ */
+
+.site-footer{
+  background:var(--maroon-dark);
+  color:var(--paper-bright);
+}
+
+.footer-brand{
+  color:#fff;
+  letter-spacing:.04em;
+}
+
+.footer-note{
+  color:rgba(251,248,243,.75);
+}
+
+.footer-links a:hover{
+  color:var(--gold);
+}
+
+.copyright{
+  border-top-color:rgba(255,255,255,.14);
+}
+
+/* -----------------------------
+   CURSOR
+------------------------------ */
+
+@media (hover:hover) and (pointer:fine){
+  .cursor-dot{
+    background:var(--maroon);
+  }
+
+  .cursor-ring{
+    border-color:rgba(92,21,38,.72);
+  }
+
+  .cursor-ring.is-hovering{
+    background:rgba(92,21,38,.10);
+  }
+}
+
+/* -----------------------------
+   MOBILE
+------------------------------ */
+
+@media(max-width:1100px){
+  .site-header.is-open .site-nav{
+    background:var(--paper);
+  }
+
+  .site-header.is-open .site-nav a{
+    font-family:"DM Sans",Arial,sans-serif;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+  }
+}
+
+@media(max-width:780px){
+  .hero{
+    border-bottom-width:14px;
+  }
+
+  .hero-copy{
+    padding-top:58px;
+  }
+
+  .hero-copy::before{
+    margin-bottom:14px;
+    font-size:23px;
+  }
+
+  .hero-copy::after{
+    display:none;
+  }
+
+  .hero-media{
+    width:100%;
+    min-height:520px;
+    padding:38px 30px 54px;
+  }
+
+  .hero-media::before{
+    width:48%;
+    height:90%;
+  }
+
+  .hero-media::after{
+    top:25px;
+  }
+
+  .hero-media img{
+    width:94%;
+    min-height:420px;
+  }
+
+  .thinking-card{
+    border-right:0;
+    border-bottom-color:rgba(255,255,255,.16);
+  }
+
+  .about-media{
+    min-height:520px;
+    padding:42px 26px 54px 36px;
+  }
+
+  .about-media img{
+    width:94%;
+  }
+
+  .contact-copy::before{
+    top:5%;
+  }
+}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  .hero-media img,
+  .about-media img{
+    transform:none;
+  }
+}
