@@ -660,3 +660,15 @@ body{
     transform:none;
   }
 }
+
+html,
+body,
+a,
+button {
+  cursor: url("/ugc/assets/arya-cursor.png") 7 1, auto !important;
+}
+
+.cursor-dot,
+.cursor-ring {
+  display: none !important;
+}
