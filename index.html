@@ -527,6 +527,97 @@ body,
 a,
 button {
   cursor: url("/ugc/assets/arya-cursor.png") 7 1, auto !important;
+} /* Arya Ricci animated cursor */
+@media (hover: hover) and (pointer: fine) {
+
+  body,
+  a,
+  button {
+    cursor: none !important;
+  }
+
+  .cursor-dot {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 28px;
+    height: 28px;
+
+    background: url("/ugc/assets/arya-cursor.png") center / contain no-repeat;
+
+    pointer-events: none;
+    z-index: 99999;
+
+    transform: translate(-3px, -3px);
+
+    filter: drop-shadow(0 3px 4px rgba(60, 13, 24, 0.2));
+  }
+
+  .cursor-ring {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 30px;
+    height: 30px;
+
+    border: 1px solid rgba(183, 154, 103, 0.55);
+    border-radius: 50%;
+
+    background: rgba(92, 21, 38, 0.035);
+
+    box-shadow:
+      0 0 0 4px rgba(183, 154, 103, 0.04);
+
+    pointer-events: none;
+    z-index: 99998;
+
+    transform: translate(-50%, -50%);
+
+    transition:
+      width .2s ease,
+      height .2s ease,
+      background .2s ease,
+      border-color .2s ease;
+  }
+
+  .cursor-ring::after {
+    content: "✦";
+    position: absolute;
+    right: -7px;
+    top: -9px;
+
+    color: #b79a67;
+    font-size: 10px;
+
+    opacity: 0;
+    transform: scale(.3) rotate(-20deg);
+
+    transition:
+      opacity .18s ease,
+      transform .18s ease;
+  }
+
+  .cursor-ring.is-hovering {
+    width: 45px;
+    height: 45px;
+
+    border-color: rgba(92, 21, 38, 0.65);
+    background: rgba(92, 21, 38, 0.07);
+  }
+
+  .cursor-ring.is-hovering::after {
+    opacity: 1;
+    transform: scale(1) rotate(10deg);
+  }
+
+  .cursor-ring.is-clicking {
+    width: 22px;
+    height: 22px;
+
+    background: rgba(92, 21, 38, 0.14);
+  }
 } </style>
 </head>
 
@@ -605,5 +696,55 @@ button {
       });
     }
   </script>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<script>
+  const cursorDot = document.querySelector(".cursor-dot");
+  const cursorRing = document.querySelector(".cursor-ring");
+
+  let mouseX = 0;
+  let mouseY = 0;
+
+  let ringX = 0;
+  let ringY = 0;
+
+  window.addEventListener("mousemove", (event) => {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+
+    cursorDot.style.left = mouseX + "px";
+    cursorDot.style.top = mouseY + "px";
+  });
+
+  function animateCursor() {
+    ringX += (mouseX - ringX) * 0.16;
+    ringY += (mouseY - ringY) * 0.16;
+
+    cursorRing.style.left = ringX + "px";
+    cursorRing.style.top = ringY + "px";
+
+    requestAnimationFrame(animateCursor);
+  }
+
+  animateCursor();
+
+  document.querySelectorAll("a, button").forEach((item) => {
+    item.addEventListener("mouseenter", () => {
+      cursorRing.classList.add("is-hovering");
+    });
+
+    item.addEventListener("mouseleave", () => {
+      cursorRing.classList.remove("is-hovering");
+    });
+  });
+
+  window.addEventListener("mousedown", () => {
+    cursorRing.classList.add("is-clicking");
+  });
+
+  window.addEventListener("mouseup", () => {
+    cursorRing.classList.remove("is-clicking");
+  });
+</script>
 </body>
 </html>
