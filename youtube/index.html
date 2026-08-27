@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="YouTube by Arya Ricci — coming soon.">
+  <title>YouTube | Arya Ricci</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#171512;
+      --muted:#6c625e;
+      --paper:#f6f2ec;
+      --paper-bright:#fbf9f5;
+      --line:rgba(23,21,18,.16);
+      --accent:#b2785f;
+      --maroon:#641c2f;
+      --maroon-dark:#3f101d;
+      --rose:#d9b5ac;
+      --header-height:112px;
+      --max-width:1920px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:var(--paper);
+      font-family:"DM Sans",Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit}
+    .sr-only{
+      position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+      overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+    }
+
+    /* shared site header */
+    .site-header{
+      width:min(100%,var(--max-width));
+      min-height:var(--header-height);
+      margin:0 auto;
+      padding:0 6%;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:32px;
+      background:rgba(246,242,236,.96);
+      border-bottom:1px solid rgba(0,0,0,.04);
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(14px);
+    }
+    .brand{
+      display:inline-flex;
+      flex-direction:column;
+      gap:3px;
+      text-decoration:none;
+      justify-self:start;
+    }
+    .brand-name{
+      font-family:"Playfair Display",Georgia,serif;
+      font-size:clamp(23px,2vw,36px);
+      letter-spacing:.03em;
+      line-height:.95;
+    }
+    .brand-role{
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.13em;
+    }
+    .site-nav{
+      display:flex;
+      align-items:center;
+      gap:clamp(28px,4vw,58px);
+    }
+    .site-nav a{
+      text-transform:uppercase;
+      text-decoration:none;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.1em;
+    }
+    .site-nav a:hover,
+    .site-nav a[aria-current="page"]{color:var(--accent)}
+    .header-cta{
+      justify-self:end;
+      padding:18px 24px;
+      background:#090908;
+      color:#fff;
+      border-radius:4px;
+      text-decoration:none;
+      text-transform:uppercase;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.08em;
+      transition:transform .2s ease,background .2s ease;
+    }
+    .header-cta:hover{transform:translateY(-2px);background:#25211d}
+    .menu-toggle{display:none}
+
+    main{
+      width:min(100%,var(--max-width));
+      min-height:calc(100vh - var(--header-height));
+      margin:0 auto;
+      padding:34px 4%;
+      background:
+        radial-gradient(circle at 16% 22%, rgba(100,28,47,.11), transparent 25%),
+        radial-gradient(circle at 84% 72%, rgba(178,120,95,.12), transparent 26%),
+        var(--paper);
+    }
+
+    .youtube-stage{
+      min-height:calc(100vh - var(--header-height) - 68px);
+      position:relative;
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+      padding:70px 7%;
+      border:1px solid var(--line);
+      background:var(--paper-bright);
+    }
+
+    .youtube-stage::before,
+    .youtube-stage::after{
+      content:"";
+      position:absolute;
+      width:170px;
+      height:170px;
+      border:1px solid rgba(100,28,47,.22);
+      border-radius:50%;
+    }
+    .youtube-stage::before{top:-70px;right:-35px}
+    .youtube-stage::after{bottom:-80px;left:-55px}
+
+    .film-strip{
+      position:absolute;
+      inset:24px 24px auto;
+      height:18px;
+      display:flex;
+      gap:13px;
+      overflow:hidden;
+      opacity:.45;
+    }
+    .film-strip span{
+      flex:0 0 32px;
+      height:13px;
+      border:1px solid var(--maroon);
+      border-radius:2px;
+    }
+
+    .film-strip.bottom{
+      inset:auto 24px 24px;
+    }
+
+    .sparkle{
+      position:absolute;
+      color:var(--maroon);
+      font-family:"Playfair Display",Georgia,serif;
+      line-height:1;
+      user-select:none;
+    }
+    .s1{top:18%;left:10%;font-size:34px;transform:rotate(-12deg)}
+    .s2{top:28%;right:12%;font-size:22px;transform:rotate(13deg)}
+    .s3{bottom:19%;left:15%;font-size:23px}
+    .s4{bottom:15%;right:9%;font-size:38px;transform:rotate(18deg)}
+
+    .tape{
+      position:absolute;
+      width:108px;
+      height:26px;
+      background:rgba(217,181,172,.52);
+      transform:rotate(-8deg);
+      top:8%;
+      left:22%;
+      border:1px solid rgba(100,28,47,.08);
+    }
+
+    .content{
+      position:relative;
+      z-index:2;
+      width:min(950px,100%);
+      text-align:center;
+    }
+
+    .eyebrow{
+      margin:0 0 22px;
+      color:var(--maroon);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      margin:0;
+      font-family:"Playfair Display",Georgia,serif;
+      font-size:clamp(62px,9vw,142px);
+      font-weight:500;
+      line-height:.83;
+      letter-spacing:-.055em;
+    }
+
+    h1 em{
+      color:var(--maroon);
+      font-weight:500;
+    }
+
+    .sub{
+      width:min(570px,100%);
+      margin:28px auto 0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.7;
+    }
+
+    .badge-row{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:34px;
+    }
+    .badge{
+      padding:9px 13px;
+      border:1px solid rgba(100,28,47,.3);
+      color:var(--maroon);
+      background:#fffaf7;
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      border-radius:999px;
+    }
+
+    .mini-camera{
+      margin:38px auto 0;
+      width:64px;
+      height:42px;
+      border:2px solid var(--maroon);
+      border-radius:8px;
+      position:relative;
+    }
+    .mini-camera::before{
+      content:"";
+      position:absolute;
+      width:13px;
+      height:13px;
+      border:2px solid var(--maroon);
+      border-radius:50%;
+      left:22px;
+      top:12px;
+    }
+    .mini-camera::after{
+      content:"";
+      position:absolute;
+      width:18px;
+      height:8px;
+      border:2px solid var(--maroon);
+      border-bottom:0;
+      border-radius:4px 4px 0 0;
+      left:7px;
+      top:-10px;
+      background:var(--paper-bright);
+    }
+
+    .note{
+      margin:16px 0 0;
+      color:var(--maroon);
+      font-family:"Playfair Display",Georgia,serif;
+      font-style:italic;
+      font-size:17px;
+    }
+
+    @media(max-width:1100px){
+      .site-header{grid-template-columns:1fr auto;min-height:86px}
+      .site-nav,.header-cta{display:none}
+      .menu-toggle{
+        display:grid;gap:6px;padding:14px;border:0;background:transparent;cursor:pointer;
+      }
+      .menu-toggle span:not(.sr-only){width:26px;height:2px;background:var(--ink)}
+      .site-header.is-open .site-nav{
+        display:flex;position:absolute;left:0;right:0;top:86px;flex-direction:column;
+        align-items:flex-start;gap:24px;padding:30px 6%;background:var(--paper);
+        border-bottom:1px solid var(--line);
+      }
+      main{min-height:calc(100vh - 86px)}
+    }
+
+    @media(max-width:780px){
+      main{padding:20px 4%}
+      .youtube-stage{padding:68px 8%;min-height:calc(100vh - 126px)}
+      .film-strip{inset-left:12px;inset-right:12px}
+      .tape{left:14%;top:10%}
+      .sub{font-size:14px}
+      .badge-row{gap:8px}
+      .s1{left:5%}
+      .s2{right:6%}
+      .s3{left:8%}
+      .s4{right:5%}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header" id="top">
+    <a class="brand" href="/">
+      <span class="brand-name">ARYA RICCI</span>
+      <span class="brand-role">CREATOR</span>
+    </a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span class="sr-only">Open navigation</span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/youtube/" aria-current="page">YouTube</a>
+      <a href="/journal/">Blog</a>
+    </nav>
+
+    <a class="header-cta" href="mailto:hello@aryaricci.com">Contact <span>→</span></a>
+  </header>
+
+  <main>
+    <section class="youtube-stage">
+      <div class="film-strip" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="film-strip bottom" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="tape" aria-hidden="true"></div>
+      <span class="sparkle s1" aria-hidden="true">✦</span>
+      <span class="sparkle s2" aria-hidden="true">✧</span>
+      <span class="sparkle s3" aria-hidden="true">✦</span>
+      <span class="sparkle s4" aria-hidden="true">✧</span>
+
+      <div class="content">
+        <p class="eyebrow">YouTube · video diary</p>
+        <h1>Coming<br><em>soon.</em></h1>
+        <p class="sub">
+          Stories, experiments, reinventions, and whatever else I decide deserves a camera pointed at it.
+        </p>
+
+        <div class="badge-row" aria-label="Channel themes">
+          <span class="badge">life</span>
+          <span class="badge">creative process</span>
+          <span class="badge">school</span>
+          <span class="badge">travel</span>
+        </div>
+
+        <div class="mini-camera" aria-hidden="true"></div>
+        <p class="note">currently being edited somewhere...</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const header=document.querySelector('.site-header');
+    const toggle=document.querySelector('.menu-toggle');
+    const navLinks=document.querySelectorAll('.site-nav a');
+
+    if(header&&toggle){
+      toggle.addEventListener('click',()=>{
+        const open=header.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded',String(open));
+      });
+      navLinks.forEach(link=>{
+        link.addEventListener('click',()=>{
+          header.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded','false');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
