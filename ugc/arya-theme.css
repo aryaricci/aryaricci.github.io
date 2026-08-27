@@ -144,28 +144,6 @@ body{
   background:transparent;
 }
 
-.hero-copy::before{
-  content:"AR âœ¦";
-  display:block;
-  margin:0 0 18px 2px;
-  color:var(--gold);
-  font-family:"Playfair Display",Georgia,serif;
-  font-size:28px;
-  letter-spacing:.03em;
-}
-
-.hero-copy::after{
-  content:"â™¡";
-  position:absolute;
-  left:11%;
-  bottom:38px;
-  color:var(--gold);
-  font-family:"Playfair Display",Georgia,serif;
-  font-size:26px;
-  transform:rotate(-9deg);
-  opacity:.9;
-}
-
 .eyebrow{
   color:var(--maroon);
 }
@@ -238,20 +216,37 @@ body{
   right:0;
   top:5%;
   opacity:.62;
-  background-color:#c9ad8b;
+  background-color:#c79b67;
   background-image:
-    radial-gradient(ellipse at 18% 24%,#40352f 0 5px,transparent 5.5px),
-    radial-gradient(ellipse at 22% 27%,transparent 0 9px,#85705f 9.5px 12px,transparent 12.5px),
-    radial-gradient(ellipse at 66% 18%,#40352f 0 4px,transparent 4.5px),
-    radial-gradient(ellipse at 69% 20%,transparent 0 8px,#8b715e 8.5px 11px,transparent 11.5px),
-    radial-gradient(ellipse at 45% 56%,#40352f 0 5px,transparent 5.5px),
-    radial-gradient(ellipse at 47% 58%,transparent 0 9px,#876f5d 9.5px 12px,transparent 12.5px),
-    radial-gradient(ellipse at 82% 72%,#40352f 0 5px,transparent 5.5px);
+    radial-gradient(ellipse at 12% 18%, #2a211c 0 7px, transparent 7.6px),
+    radial-gradient(ellipse at 42% 12%, #3a2b22 0 5px, transparent 5.8px),
+    radial-gradient(ellipse at 76% 22%, #241c18 0 8px, transparent 8.8px),
+    radial-gradient(ellipse at 24% 48%, #33261f 0 6px, transparent 6.8px),
+    radial-gradient(ellipse at 58% 44%, #211a17 0 7px, transparent 7.8px),
+    radial-gradient(ellipse at 88% 50%, #3b2c23 0 5px, transparent 5.8px),
+    radial-gradient(ellipse at 10% 78%, #211a17 0 6px, transparent 6.8px),
+    radial-gradient(ellipse at 46% 74%, #35271f 0 8px, transparent 8.8px),
+    radial-gradient(ellipse at 78% 82%, #241c18 0 6px, transparent 6.8px);
   background-size:
-    90px 82px,90px 82px,
-    96px 86px,96px 86px,
-    100px 90px,100px 90px,
-    86px 90px;
+    78px 72px,
+    92px 86px,
+    84px 80px,
+    88px 82px,
+    96px 90px,
+    80px 76px,
+    90px 86px,
+    82px 78px,
+    94px 88px;
+  background-position:
+    0 0,
+    14px 8px,
+    -8px 18px,
+    22px -4px,
+    -12px 14px,
+    8px 20px,
+    -16px -10px,
+    18px 4px,
+    4px -14px;
   clip-path:polygon(12% 0,100% 0,100% 100%,0 100%,7% 70%,3% 48%,8% 28%);
 }
 
@@ -293,16 +288,6 @@ body{
 .featured{
   position:relative;
   background:var(--paper-bright);
-}
-
-.featured::before{
-  content:"âœ¦";
-  position:absolute;
-  left:4.5%;
-  top:34px;
-  color:var(--gold);
-  font-family:"Playfair Display",Georgia,serif;
-  font-size:22px;
 }
 
 .campaign-brand{
@@ -363,25 +348,6 @@ body{
   color:var(--paper-bright);
 }
 
-.thinking-section::before{
-  content:"âœ¦";
-  position:absolute;
-  top:28px;
-  left:5%;
-  color:var(--gold);
-  font-size:28px;
-}
-
-.thinking-section::after{
-  content:"â™¡";
-  position:absolute;
-  right:5%;
-  bottom:26px;
-  color:var(--rose);
-  font-size:28px;
-  transform:rotate(8deg);
-}
-
 .thinking-section h2{
   color:var(--paper-bright);
 }
@@ -435,11 +401,6 @@ body{
   background:var(--paper);
 }
 
-.process-heading .section-label::before{
-  content:"âœ¦ ";
-  color:var(--gold);
-}
-
 .process-track::before{
   background:rgba(92,21,38,.42);
 }
@@ -470,15 +431,6 @@ body{
   border-radius:4px;
   border-color:rgba(92,21,38,.14);
   background:rgba(255,255,255,.36);
-}
-
-.expect-card::after{
-  content:"âœ¦";
-  position:absolute;
-  right:18px;
-  top:14px;
-  color:rgba(183,154,103,.55);
-  font-size:15px;
 }
 
 .expect-card:hover{
@@ -518,13 +470,31 @@ body{
   width:42%;
   height:62%;
   opacity:.5;
-  background-color:#c9ad8b;
+  background-color:#c79b67;
   background-image:
-    radial-gradient(ellipse at 18% 24%,#40352f 0 5px,transparent 5.5px),
-    radial-gradient(ellipse at 22% 27%,transparent 0 9px,#85705f 9.5px 12px,transparent 12.5px),
-    radial-gradient(ellipse at 66% 18%,#40352f 0 4px,transparent 4.5px),
-    radial-gradient(ellipse at 69% 20%,transparent 0 8px,#8b715e 8.5px 11px,transparent 11.5px);
-  background-size:90px 82px,90px 82px,96px 86px,96px 86px;
+    radial-gradient(ellipse at 14% 20%, #2a211c 0 7px, transparent 7.6px),
+    radial-gradient(ellipse at 44% 16%, #3a2b22 0 5px, transparent 5.8px),
+    radial-gradient(ellipse at 76% 24%, #241c18 0 8px, transparent 8.8px),
+    radial-gradient(ellipse at 24% 54%, #33261f 0 6px, transparent 6.8px),
+    radial-gradient(ellipse at 60% 48%, #211a17 0 7px, transparent 7.8px),
+    radial-gradient(ellipse at 84% 72%, #3b2c23 0 6px, transparent 6.8px),
+    radial-gradient(ellipse at 38% 82%, #211a17 0 5px, transparent 5.8px);
+  background-size:
+    78px 72px,
+    92px 86px,
+    84px 80px,
+    88px 82px,
+    96px 90px,
+    80px 76px,
+    90px 86px;
+  background-position:
+    0 0,
+    14px 8px,
+    -8px 18px,
+    22px -4px,
+    -12px 14px,
+    8px 20px,
+    -16px -10px;
 }
 
 .about-media::after{
@@ -568,31 +538,8 @@ body{
   position:relative;
 }
 
-.contact-visual::after{
-  content:"AR âœ¦";
-  position:absolute;
-  left:28px;
-  bottom:26px;
-  padding:11px 15px;
-  background:rgba(60,13,24,.88);
-  color:#fff;
-  font-family:"Playfair Display",Georgia,serif;
-  font-size:18px;
-  letter-spacing:.04em;
-}
-
 .contact-copy{
   position:relative;
-}
-
-.contact-copy::before{
-  content:"â™¡";
-  position:absolute;
-  right:8%;
-  top:9%;
-  color:var(--gold);
-  font-size:28px;
-  transform:rotate(10deg);
 }
 
 .contact-details div{
@@ -670,15 +617,6 @@ body{
     padding-top:58px;
   }
 
-  .hero-copy::before{
-    margin-bottom:14px;
-    font-size:23px;
-  }
-
-  .hero-copy::after{
-    display:none;
-  }
-
   .hero-media{
     width:100%;
     min-height:520px;
@@ -713,9 +651,6 @@ body{
     width:94%;
   }
 
-  .contact-copy::before{
-    top:5%;
-  }
 }
 
 /* Reduced motion */
