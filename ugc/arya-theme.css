@@ -661,14 +661,88 @@ body{
   }
 }
 
-html,
-body,
-a,
-button {
-  cursor: url("/ugc/assets/arya-cursor.png") 7 1, auto !important;
-}
+/* Arya Ricci animated cursor */
+@media (hover: hover) and (pointer: fine) {
 
-.cursor-dot,
-.cursor-ring {
-  display: none !important;
+  body,
+  a,
+  button {
+    cursor: none !important;
+  }
+
+  .cursor-dot {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 0 !important;
+
+    background: url("/ugc/assets/arya-cursor.png") center / contain no-repeat !important;
+
+    transform: translate(-3px, -3px) !important;
+
+    filter: drop-shadow(0 3px 4px rgba(60, 13, 24, 0.2));
+
+    transition:
+      width .15s ease,
+      height .15s ease,
+      filter .15s ease;
+  }
+
+  .cursor-dot::before {
+    content: none !important;
+  }
+
+  .cursor-ring {
+    width: 30px !important;
+    height: 30px !important;
+
+    border: 1px solid rgba(183, 154, 103, 0.55) !important;
+    background: rgba(92, 21, 38, 0.035) !important;
+
+    box-shadow:
+      0 0 0 4px rgba(183, 154, 103, 0.04);
+
+    transition:
+      width .2s ease,
+      height .2s ease,
+      background .2s ease,
+      border-color .2s ease,
+      transform .15s ease !important;
+  }
+
+  .cursor-ring::after {
+    content: "✦";
+    position: absolute;
+    right: -7px;
+    top: -9px;
+
+    color: #b79a67;
+    font-size: 10px;
+
+    opacity: 0;
+    transform: scale(.3) rotate(-20deg);
+
+    transition:
+      opacity .18s ease,
+      transform .18s ease;
+  }
+
+  .cursor-ring.is-hovering {
+    width: 45px !important;
+    height: 45px !important;
+
+    border-color: rgba(92, 21, 38, 0.65) !important;
+    background: rgba(92, 21, 38, 0.07) !important;
+  }
+
+  .cursor-ring.is-hovering::after {
+    opacity: 1;
+    transform: scale(1) rotate(10deg);
+  }
+
+  .cursor-ring.is-clicking {
+    width: 22px !important;
+    height: 22px !important;
+
+    background: rgba(92, 21, 38, 0.14) !important;
+  }
 }
